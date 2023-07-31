@@ -1,4 +1,5 @@
 import os
+import dj_database_url
 from dotenv import load_dotenv
 from environs import Env
 
@@ -6,14 +7,16 @@ from environs import Env
 load_dotenv()
 env = Env()
 
+DSM_DB_URL = env.str('DSM_DB_URL')
+db_url = dj_database_url.parse(DSM_DB_URL)
 DATABASES = {
     'default': {
-        'ENGINE': env.str('DSM_ENGINE'),
-        'HOST': env.str('DSM_HOST'),
-        'PORT': env.str('DSM_PORT'),
-        'NAME': env.str('DSM_NAME'),
-        'USER': env.str('DSM_USER'),
-        'PASSWORD': env.str('DSM_PASSWORD'),
+        'ENGINE': db_url['ENGINE'],
+        'HOST': db_url['HOST'],
+        'PORT': db_url['PORT'],
+        'NAME': db_url['NAME'],
+        'USER': db_url['USER'],
+        'PASSWORD': db_url['PASSWORD'],
     }
 }
 
@@ -21,7 +24,7 @@ INSTALLED_APPS = ['datacenter']
 
 SECRET_KEY = env.str('DSM_SECRET_KEY')
 
-DEBUG = env.bool('DEBUG')
+DEBUG = env.bool('DSM_DEBUG')
 
 ROOT_URLCONF = 'project.urls'
 

@@ -13,13 +13,7 @@ Python3 should be already installed. Then use pip (or pip3, if there is a confli
 To set up the environment variables, create a file named .env with the following content
 
 ```
-DSM_ENGINE='django.db.backends.postgresql_psycopg2'
-DSM_HOST=url db
-DSM_PORT=port
-DSM_NAME=name db
-DSM_USER=login db
-DSM_PASSWORD=password db
-DSM_SECRET_KEY=site secret key
+DSM_DB_URL='postgres://db_user:db_password@db_host:db_port/db_name'
 DSM_DEBUG=FALSE
 ALLOWED_HOSTS=['localhost', '127.0.0.1', 'www.mysite.com']
 ```
