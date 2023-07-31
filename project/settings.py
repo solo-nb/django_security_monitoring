@@ -32,7 +32,7 @@ except EnvError:
 ROOT_URLCONF = 'project.urls'
 
 try:
-    ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
+    ALLOWED_HOSTS = env.list('DSM_ALLOWED_HOSTS')
 except EnvError:
     ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
