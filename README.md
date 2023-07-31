@@ -14,8 +14,8 @@ To set up the environment variables, create a file named .env with the following
 
 ```
 DSM_DB_URL='postgres://db_user:db_password@db_host:db_port/db_name'
-DSM_DEBUG=FALSE
-ALLOWED_HOSTS=['localhost', '127.0.0.1', 'www.mysite.com']
+DSM_DEBUG=True # defult value = False
+ALLOWED_HOSTS=['localhost', '127.0.0.1', 'www.mysite.com'] # defult value = ['localhost', '127.0.0.1']
 ```
 
 To start the server using Django, run the following command `python manage.py runserver 0.0.0.0:8000`

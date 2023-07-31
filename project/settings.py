@@ -1,7 +1,7 @@
 import os
 import dj_database_url
 from dotenv import load_dotenv
-from environs import Env
+from environs import Env, EnvError
 
 
 load_dotenv()
@@ -24,11 +24,17 @@ INSTALLED_APPS = ['datacenter']
 
 SECRET_KEY = env.str('DSM_SECRET_KEY')
 
-DEBUG = env.bool('DSM_DEBUG')
+try:
+    DEBUG = env.bool('DSM_DEBUG')
+except EnvError:
+    DEBUG = False
 
 ROOT_URLCONF = 'project.urls'
 
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
+try:
+    ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
+except EnvError:
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
