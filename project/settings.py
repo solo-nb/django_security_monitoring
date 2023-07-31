@@ -1,31 +1,31 @@
 import os
 from dotenv import load_dotenv
+from environs import Env
+
+
 load_dotenv()
+env = Env()
 
 DATABASES = {
     'default': {
-        'ENGINE': os.getenv('DSM_ENGINE'),
-        'HOST': os.getenv('DSM_HOST'),
-        'PORT': os.getenv('DSM_PORT'),
-        'NAME': os.getenv('DSM_NAME'),
-        'USER': os.getenv('DSM_USER'),
-        'PASSWORD': os.getenv('DSM_PASSWORD'),
+        'ENGINE': env.str('DSM_ENGINE'),
+        'HOST': env.str('DSM_HOST'),
+        'PORT': env.str('DSM_PORT'),
+        'NAME': env.str('DSM_NAME'),
+        'USER': env.str('DSM_USER'),
+        'PASSWORD': env.str('DSM_PASSWORD'),
     }
 }
 
 INSTALLED_APPS = ['datacenter']
 
-SECRET_KEY = os.getenv('DSM_SECRET_KEY')
+SECRET_KEY = env.str('DSM_SECRET_KEY')
 
-DEBUG = (
-    os.getenv('DSM_DEBUG') == 'TRUE'
-    or os.getenv('DSM_DEBUG') == 'True'
-    or os.getenv('DSM_DEBUG') == 'true'
-)
+DEBUG = env.bool('DEBUG')
 
 ROOT_URLCONF = 'project.urls'
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS')
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
