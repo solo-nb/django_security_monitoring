@@ -18,14 +18,14 @@ INSTALLED_APPS = ['datacenter']
 SECRET_KEY = os.getenv('DSM_SECRET_KEY')
 
 DEBUG = (
-    os.getenv('DSM_DEBUG') == 'TRUE' 
-    or os.getenv('DSM_DEBUG') == 'True' 
+    os.getenv('DSM_DEBUG') == 'TRUE'
+    or os.getenv('DSM_DEBUG') == 'True'
     or os.getenv('DSM_DEBUG') == 'true'
 )
 
 ROOT_URLCONF = 'project.urls'
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS')
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

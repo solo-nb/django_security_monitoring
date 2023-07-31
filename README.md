@@ -21,6 +21,7 @@ DSM_USER=login db
 DSM_PASSWORD=password db
 DSM_SECRET_KEY=site secret key
 DSM_DEBUG=FALSE
+ALLOWED_HOSTS=['localhost', '127.0.0.1', 'www.mysite.com']
 ```
 
 To start the server using Django, run the following command `python manage.py runserver 0.0.0.0:8000`
